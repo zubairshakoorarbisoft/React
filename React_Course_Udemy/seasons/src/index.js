@@ -18,7 +18,7 @@ class App extends React.Component {
     );
   }
 
-  render() {
+  renderContent() {
     const { lat, errorMessage } = this.state;
 
     if (errorMessage && !lat) {
@@ -26,8 +26,12 @@ class App extends React.Component {
     } else if (!errorMessage && lat) {
       return <SeasonDisplay lat={lat} />;
     } else {
-      return <Spinner />;
+      return <Spinner message="Please accept the request of location." />;
     }
+  }
+
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 
